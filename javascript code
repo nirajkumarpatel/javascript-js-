@@ -1,0 +1,292 @@
+<script>
+function edit_row(no)
+{
+ document.getElementById("edit_button"+no).style.display="none";
+ document.getElementById("save_button"+no).style.display="block";
+	
+ var id=document.getElementById("id_row"+no);
+ var name=document.getElementById("name_row"+no);
+ var bloodgroup=document.getElementById("bloodgroup_row"+no);
+ var salary=document.getElementById("salary_row"+no);
+ var dob=document.getElementById("dob_row"+no);
+ var email=document.getElementById("email_row"+no);
+	
+ var id_data=id.innerHTML;
+ var name_data=name.innerHTML;
+ var bloodgroup_data=bloodgroup.innerHTML;
+ var salary_data=salary.innerHTML;
+ var dob_data=dob.innerHTML;
+ var email_data=email.innerHTML;
+	
+ id.innerHTML="<input type='text' id='id_text"+no+"' value='"+id_data+"'>";
+ name.innerHTML="<input type='text' id='name_text"+no+"' value='"+name_data+"'>";
+ bloodgroup.innerHTML="<input type='text' id='bloodgroup_text"+no+"' value='"+bloodgroup_data+"'>";
+ salary.innerHTML="<input type='text' id='salary_text"+no+"' value='"+salary_data+"'>";
+dob.innerHTML="<input type='text' id='dob_text"+no+"' value='"+dob_data+"'>";
+email.innerHTML="<input type='text' id='email_text"+no+"' value='"+email_data+"'>";
+ 
+}
+
+function save_row(no)
+{
+ var id_val=document.getElementById("id_text"+no).value;
+ var name_val=document.getElementById("name_text"+no).value;
+ var bloodgroup_val=document.getElementById("bloodgroup_text"+no).value;
+ var salary_val=document.getElementById("salary_text"+no).value;
+ var dob_val=document.getElementById("dob_text"+no).value;
+ var email_val=document.getElementById("email_text"+no).value;
+
+ if(id_val === null || id_val === '') 
+ {
+   alert("required field")
+        return alert("Customer Id can't be empty");
+
+    } else if(isNaN(id_val)) 
+    {
+        return alert("Customer Id should contain only numeric value");
+
+    } else if(name_val === null || name_val === '') 
+    {
+      alert("required field")
+        return alert("first name can't be empty");
+
+    } else if(!name_val.match(alphabets)) 
+    {
+        return alert("first name should contain only alphabets");
+
+    } else if(bloodgroup_val === null || bloodgroup_val === '') 
+    
+  {
+    alert("required field")
+      return alert("Blood group can't be empty");
+
+    } else if(!bloodgroup_val.match(bloodGroup)) 
+    {
+      return alert("Blood group should contain only A/B/AB/O and + or -");
+    }
+    else if(salary_val===null|| salary_val==='')
+    {
+      alert("required field")
+    return alert("Customer salary can't be empty")
+    } 
+    else if(dob_val===null||dob_val==='')
+    {
+      alert("required field")
+      return alert("DOB can't be empty");
+    } else if(!dob_val.match(dob)) {
+      return alert("Customer dob should contain only dd/mm/yyyy format value");
+    } 
+    else if(email_val===null||email_val==='')
+    {
+
+      alert("required field")
+      return alert("email cant be empty")
+
+    }
+else if(!email_val.match(email))
+return alert("invalid email")
+
+
+
+
+    else {
+      alert("data succusfully edited");
+      document.getElementById("id_row"+no).innerHTML=id_val;
+ document.getElementById("name_row"+no).innerHTML=name_val;
+ document.getElementById("bloodgroup_row"+no).innerHTML=bloodgroup_val;
+ document.getElementById("salary_row"+no).innerHTML=salary_val;
+ document.getElementById("dob_row"+no).innerHTML=dob_val;
+ document.getElementById("email_row"+no).innerHTML=email_val;
+
+ document.getElementById("edit_button"+no).style.display="block";
+ document.getElementById("save_button"+no).style.display="none";
+    }
+}
+
+function delete_row(no)
+{
+ document.getElementById("row"+no+"").outerHTML="";
+}
+
+let alphaNumeric = /^[0-9a-zA-Z]+$/;
+let alphabets = /^[a-zA-Z]+$/;
+let bloodGroup = /^(A|B|AB|O)[-+]$/; 
+let dob=/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
+let email=/^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+@[.a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+
+function add_row()
+{
+ var new_id=document.getElementById("new_id").value;
+ var new_name=document.getElementById("new_name").value;
+ var new_bloodgroup=document.getElementById("new_bloodgroup").value;
+ var new_salary=document.getElementById("new_salary").value;
+ var new_dob=document.getElementById("new_dob").value;
+ var new_email=document.getElementById("new_email").value;
+	
+ var table=document.getElementById("data_table");
+ var table_len=(table.rows.length);
+
+ if(new_id === null || new_id === '') 
+ {
+   alert("required field")
+        return alert("emp Id can't be empty");
+
+    } else if(isNaN(new_id)) 
+    {
+      
+        return alert("emp Id should contain only numeric value");
+
+    } else if(new_name === null || new_name === '') 
+    {
+      alert("required field")
+        return alert("emp name can't be empty");
+
+    } else if(!new_name.match(alphabets)) 
+    {
+     
+        return alert("emp name should contain only alphabets");
+
+    } else if(new_bloodgroup === null || new_bloodgroup === '') 
+    
+  {
+    alert("required field")
+      return alert("Blood group can't be empty");
+
+    } else if(!new_bloodgroup.match(bloodGroup)) 
+    {
+      
+      return alert("Blood group should contain only A/B/AB/O and + or -");
+    }
+    else if(new_salary===null|| new_salary==='')
+    {
+      alert("required field")
+    return alert("emp salary should contain only numeric value")
+    } 
+    else if(new_dob===null||new_dob==='')
+    {
+      alert("required field")
+      return alert("DOB can't be empty");
+    } else if(!new_dob.match(dob)) {
+      
+      return alert("emp dob should contain only dd/mm/yyyy format value");
+    } 
+    else if(new_email===null||new_email==='')
+    {
+
+      alert("required field")
+      return alert("email cant be empty")
+
+    }
+else if(!new_email.match(email))
+return alert("invalid email")
+
+
+
+
+    else {
+      alert("data succusfully added to the table")
+      var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='id_row"+table_len+"'>"+new_id+"</td><td id='name_row"+table_len+"'>"+new_name+"</td><td id='bloodgroup_row"+table_len+"'>"+new_bloodgroup+"</td><td id='salary_row"+table_len+"'>"+new_salary+"</td><td id='dob_row"+table_len+"'>"+new_dob+"</td><td id='email_row"+table_len+"'>"+new_email+"</td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
+    }
+
+
+ document.getElementById("new_id").value="";
+ document.getElementById("new_name").value="";
+ document.getElementById("new_bloodgroup").value="";
+ document.getElementById("new_salary").value="";
+ document.getElementById("new_dob").value="";
+ document.getElementById("new_email").value="";
+ 
+
+ }
+ 
+ 
+function sortTable(index) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("data_table");
+  switching = true;
+ 
+  dir = "asc"; 
+  
+  while (switching) {
+  
+    switching = false;
+    rows = table.rows;
+   
+    for (i = 1; i < (rows.length - 1); i++) {
+     
+      shouldSwitch = false;
+    
+      x = rows[i].getElementsByTagName("TD")[index];
+      y = rows[i + 1].getElementsByTagName("TD")[index];
+    
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+         
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+         
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+     
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+  
+      switchcount ++;      
+    } else {
+     
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+
+
+
+
+function myFunction() {
+
+
+var input = document.getElementById("myInput");
+var filter = input.value.toUpperCase();
+var table = document.getElementById("data_table");
+var trs = table.tBodies[0].getElementsByTagName("tr");
+
+
+for (var i = 0; i < trs.length; i++) {
+
+
+  var tds = trs[i].getElementsByTagName("td");
+
+
+  trs[i].style.display = "none";
+
+ 
+  for (var y = 0; y < tds.length; y++) {
+
+ 
+    if (tds[y].innerHTML.toUpperCase().indexOf(filter) > -1) {
+
+     
+      trs[i].style.display = "";
+
+    
+    continue;
+
+    }
+
+ 
+  }
+}
+
+}
+
+</script>
