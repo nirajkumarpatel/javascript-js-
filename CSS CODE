@@ -1,0 +1,49 @@
+<style>
+#data_table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: paleturquoise
+}
+
+
+ input[type=text] {
+  border: 2px solid greenyellow;
+  border-radius: 4px;
+}
+   
+   input[type=number] {
+  border: 2px solid greenyellow;
+  border-radius: 4px;
+}
+   input[type=email] {
+  border: 2px solid greenyellow;
+  border-radius: 4px
+  }
+  
+  thead{
+    background-color: #4CAF50
+  }
+body{
+
+
+  font-family: Arial;
+}
+
+  
+.button1 {border-radius: 12px;}
+.button2 {border-radius: 12px;}
+.button3 {border-radius: 12px;}
+.button4 {border-radius: 12px;}
+
+   
+   </style>
